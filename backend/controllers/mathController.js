@@ -1,4 +1,4 @@
-const EnglishQuestion = require('../models/englishModel')
+const MathQuestion = require('../models/englishModel')
 const UserResponse = require('../models/responseModel')
 
 // GET userId from session
@@ -16,13 +16,13 @@ const getUserId = (req, res) => {
 const getBaseQuestions = async (req, res) => {
   try {
     // Count the total number of documents in the collection
-    const count = await EnglishQuestion.countDocuments();
+    const count = await MathQuestion.countDocuments();
     
     // Generate a random index
     const randomIndex = Math.floor(Math.random() * count);
 
     // Use aggregation to find a random document
-    const randomQuestion = await EnglishQuestion.aggregate([
+    const randomQuestion = await MathQuestion.aggregate([
       { $skip: randomIndex },
       { $limit: 1 }
     ]);

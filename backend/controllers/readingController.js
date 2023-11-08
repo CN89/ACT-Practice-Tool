@@ -1,4 +1,4 @@
-const EnglishQuestion = require('../models/englishModel')
+const ReadingQuestion = require('../models/englishModel')
 const UserResponse = require('../models/responseModel')
 
 // GET userId from session
@@ -16,13 +16,13 @@ const getUserId = (req, res) => {
 const getBaseQuestions = async (req, res) => {
   try {
     // Count the total number of documents in the collection
-    const count = await EnglishQuestion.countDocuments();
+    const count = await ReadingQuestion.countDocuments();
     
     // Generate a random index
     const randomIndex = Math.floor(Math.random() * count);
 
     // Use aggregation to find a random document
-    const randomQuestion = await EnglishQuestion.aggregate([
+    const randomQuestion = await ReadingQuestion.aggregate([
       { $skip: randomIndex },
       { $limit: 1 }
     ]);
@@ -96,7 +96,7 @@ const postCalculatedScore = async (req,res) => {
     const userId = getUserId()
     try {
         // GET all documents with userId
-        const documents = await UserResponse.find({ userId })
+        const documents = await ReadingQuestion.find({ userId })
 
         if (!documents || documents.length === 0) {
             return res.status(404).json({ message: 'No documents found for this user.' });

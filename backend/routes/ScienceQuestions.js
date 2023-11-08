@@ -6,9 +6,9 @@ const {
     putUserResponse,
     deleteUserDocuments,
     postCalculatedScore 
-} = require('../controllers/englishController')
+} = require('../controllers/scienceController')
 
-const router = express.Router()
+const ScienceRouter = express.Router()
 
 // GET user ID
 router.get('/user', getUserId)
@@ -23,4 +23,4 @@ router.post('/score', postCalculatedScore)
 // DELETE documents associated with user
 router.delete('/responses', deleteUserDocuments)
 
-module.exports = router
+module.exports = ScienceRouter 
