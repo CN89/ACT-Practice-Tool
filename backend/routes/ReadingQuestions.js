@@ -13,13 +13,13 @@ const ReadingRouter = express.Router()
 // GET user ID
 router.get('/user', getUserId)
 // GET base questions
-router.get('/question/', getBaseQuestions)
+router.get('/reading/question', getBaseQuestions)
 // POST user response
 router.post('/responses', postUserResponse)
 //PUT user response
 router.put('responses/:id', putUserResponse)
 // POST the score  
-router.post('/score', postCalculatedScore)
+router.post('/reading/score', postCalculatedScore)
 // DELETE documents associated with user
 router.delete('/responses', deleteUserDocuments)
 

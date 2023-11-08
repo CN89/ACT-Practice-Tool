@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React from 'react'
 import { useEffect, useState } from 'react'
-import Passage from './EnglishPassage';
-import Question from './EnglishQuestion';
+import Passage from './MathQuestion';
+import Question from './MathQuestion';
 import AnswerPrompts from './AnswerPrompts';
 
 function English ({ selectedAnswerPrompt, setSelectedAnswerPrompt }) {
@@ -12,7 +12,7 @@ function English ({ selectedAnswerPrompt, setSelectedAnswerPrompt }) {
   useEffect (() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/english/question')
+        const response = await axios.get('http://localhost:4000/api/math/question')
         setData(response.data)
 
         setQuestionId(response.data._id)

@@ -13,13 +13,13 @@ const MathRouter = express.Router()
 // GET user ID
 router.get('/user', getUserId)
 // GET base questions
-router.get('/question/', getBaseQuestions)
+router.get('/math/question', getBaseQuestions)
 // POST user response
 router.post('/responses', postUserResponse)
 //PUT user response
 router.put('responses/:id', putUserResponse)
 // POST the score  
-router.post('/score', postCalculatedScore)
+router.post('/math/score', postCalculatedScore)
 // DELETE documents associated with user
 router.delete('/responses', deleteUserDocuments)
 

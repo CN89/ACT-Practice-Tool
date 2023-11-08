@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 
 
 // Routes
-app.use('/api/questions', EnglishRoutes, MathRoutes, ReadingRoutes, ScienceRoutes)
+app.use('/api', EnglishRoutes, MathRoutes, ReadingRoutes, ScienceRoutes)
 
 // Connecting to the database
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true}) 
