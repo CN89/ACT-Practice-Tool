@@ -9,14 +9,14 @@ const questionSchema = new Schema({
     passageText: String
   },
 
-  questions: [
-    {
-    questionNumber: String,
-    askText: String,
-    answerPrompts: [String],
-    correctAnswer: String,
+  questionSet: [{
+    question: {
+      questionNumber: String,
+      askText: String,
+      answerPrompts: [String],
+      correctAnswer: String,
     },
-  ],
+  }],
 })
 
 module.exports = mongoose.model('EnglishQuestion', questionSchema)

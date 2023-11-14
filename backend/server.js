@@ -1,12 +1,11 @@
 require('dotenv').config()
-
 const express = require('express')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const EnglishRoutes = require('./routes/EnglishQuestions')
-const MathRoutes = require('./routes/MathRoutes')
-const ReadingRoutes = require('./routes/ReadingRoutes')
-const ScienceRoutes = require('./routes/ScienceRoutes')
+const MathRoutes = require('./routes/MathQuestions')
+const ReadingRoutes = require('./routes/ReadingQuestions')
+const ScienceRoutes = require('./routes/ScienceQuestions')
 const fs = require('fs');
 const pdf = require('pdf-parse');
 const Question = require('./models/englishModel'); // Import your Question model
@@ -15,6 +14,7 @@ const { PDFDocument } = require('pdf-lib');
 const EnglishQuestion = require('./models/englishModel')
 const cors = require('cors')
 const { v4: uuidv4 } = require('uuid')
+const EnglishQuestion = require('./models/englishModel')
 
 // Creating the express app
 const app = express()
@@ -40,7 +40,6 @@ app.get('/', (req, res) => {
     if (!req.session.userId) {
         req.session.userId = uniqueId
     }
-    console.log(req.session.userId)
     res.json(req.session.userId)
 })
 
@@ -62,3 +61,28 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 mongoose.connection.on('connected', () => {
 
 })
+
+async function addDoc() {
+    try {
+        const newQuestion = new EnglishQuestion({
+            passage: {
+                title: dfaf,
+                passageText: "charlie is green but not blue",
+            },
+            questionSet: {
+                question: {
+                    questionNumber: ag,
+                    askText: ahf,
+                    answerPrompts: agg,
+                    correctAnswer:  adhjs,
+                }            
+            },
+        })
+        
+        await newQuestion.save()
+        console.log('Inserted Succesfully')
+    } catch (error) {
+        console.log('Error inserting:', error)
+        throw error
+    }
+}

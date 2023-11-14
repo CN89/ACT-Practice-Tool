@@ -1,16 +1,6 @@
 const ReadingQuestion = require('../models/englishModel')
 const UserResponse = require('../models/responseModel')
 
-// GET userId from session
-const getUserId = (req, res) => {
-  const userId = req.session.userId;
-  if (userId) {
-      return res.status(200).json({ userId });
-  } else {
-      return res.status(404).json({ error: "User not found" });
-  }
-}
-
 
 // GET random question
 const getBaseQuestions = async (req, res) => {
@@ -119,7 +109,6 @@ const postCalculatedScore = async (req,res) => {
 }
     
 module.exports = {
-    getUserId,
     getBaseQuestions,
     postUserResponse,
     putUserResponse,
